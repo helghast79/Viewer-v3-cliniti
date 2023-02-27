@@ -55,7 +55,7 @@ module.exports = (env, argv) => {
       path: DIST_DIR,
       filename: isProdBuild ? '[name].bundle.[chunkhash].js' : '[name].js',
       publicPath: PUBLIC_URL, // Used by HtmlWebPackPlugin for asset prefix
-      devtoolModuleFilenameTemplate: function(info) {
+      devtoolModuleFilenameTemplate: function (info) {
         if (isProdBuild) {
           return `webpack:///${info.resourcePath}`;
         } else {
@@ -137,14 +137,31 @@ module.exports = (env, argv) => {
       // compress: true,
       // http2: true,
       // https: true,
+      allowedHosts: [
+        '.ohif-dev.local',
+        'localhost',
+      ],
       hot: true,
       open: true,
       port: 3000,
+      host: 'localhost',
       client: {
         overlay: { errors: true, warnings: false },
+        webSocketURL: 'ws://localhost:3000/ws'
       },
       proxy: {
-        '/dicomweb': 'http://localhost:5000',
+        //'/dicomweb': 'http://localhost:5000',
+        '/orthanc1/dicom-web/': {
+          target: 'http://localhost:8042',
+          pathRewrite: { '^/orthanc1': '' },
+        },
+        '/api': {
+          target: 'http://localhost:8006'
+        },
+        '/cliniti-ws': {
+          target: 'http://localhost:8006/ws',
+          pathRewrite: { '^/cliniti-ws': '' },
+        }
       },
       static: [
         {

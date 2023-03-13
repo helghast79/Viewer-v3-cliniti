@@ -103,9 +103,7 @@ const SegmentationGroupTable = ({
                 onSegmentClick={onSegmentClick}
                 onSegmentEdit={onSegmentEdit}
                 onToggleSegmentVisibility={onToggleSegmentVisibility}
-                onToggleSegmentationVisibility={
-                  onToggleSegmentationVisibility
-                }
+                onToggleSegmentationVisibility={onToggleSegmentationVisibility}
                 onSegmentAdd={onSegmentAdd}
                 showSegmentDelete={showSegmentDelete}
                 onSegmentDelete={onSegmentDelete}

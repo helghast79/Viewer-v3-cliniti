@@ -124,6 +124,7 @@ const OHIFCornerstoneViewport = React.memo(props => {
     cornerstoneViewportService,
     cornerstoneCacheService,
     viewportGridService,
+    segmentationService //miguel
   } = servicesManager.services;
 
   // useCallback for scroll bar height calculation
@@ -175,6 +176,20 @@ const OHIFCornerstoneViewport = React.memo(props => {
       );
       const viewportIndex = viewportInfo.getViewportIndex();
 
+      // miguel
+      // const viewportsDisplaySets = cornerstoneViewportService.viewportsDisplaySets
+      // const iter = viewportsDisplaySets.keys()
+
+      // let done = false
+      // while (!done) {
+      //   const nextDisplaySetId = iter.next().value
+      //   if (typeof nextDisplaySetId === 'undefined') {
+      //     done = true
+      //   } else {
+      //     const displaySetInstanceUID = viewportsDisplaySets.get(nextDisplaySetId)
+      //   }
+      // }
+      // miguel
       setEnabledElement(viewportIndex, element);
 
       const renderingEngineId = viewportInfo.getRenderingEngineId();

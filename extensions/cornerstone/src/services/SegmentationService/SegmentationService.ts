@@ -1239,28 +1239,28 @@ class SegmentationService {
       );
     }
 
-    // if (brushSize !== undefined) {
-    //   const { toolGroupService } = this.servicesManager.services;
+    if (brushSize !== undefined) {
+      const { toolGroupService } = this.servicesManager.services;
 
-    //   const toolGroupIds = toolGroupService.getToolGroupIds();
+      const toolGroupIds = toolGroupService.getToolGroupIds();
 
-    //   toolGroupIds.forEach(toolGroupId => {
-    //     cstUtils.segmentation.setBrushSizeForToolGroup(toolGroupId, brushSize);
-    //   });
-    // }
+      toolGroupIds.forEach(toolGroupId => {
+        cstUtils.segmentation.setBrushSizeForToolGroup(toolGroupId, brushSize);
+      });
+    }
 
-    // if (brushThresholdGate !== undefined) {
-    //   const { toolGroupService } = this.servicesManager.services;
+    if (brushThresholdGate !== undefined) {
+      const { toolGroupService } = this.servicesManager.services;
 
-    //   const toolGroupIds = toolGroupService.getFirstToolGroupIds();
+      const toolGroupIds = toolGroupService.getFirstToolGroupIds();
 
-    //   toolGroupIds.forEach(toolGroupId => {
-    //     cstUtils.segmentation.setBrushThresholdForToolGroup(
-    //       toolGroupId,
-    //       brushThresholdGate
-    //     );
-    //   });
-    // }
+      toolGroupIds.forEach(toolGroupId => {
+        cstUtils.segmentation.setBrushThresholdForToolGroup(
+          toolGroupId,
+          brushThresholdGate
+        );
+      });
+    }
 
     this._broadcastEvent(
       this.EVENTS.SEGMENTATION_CONFIGURATION_CHANGED,
@@ -1333,6 +1333,7 @@ class SegmentationService {
     );
 
     const segFrameOfReferenceUID = segDisplaySet.instance?.FrameOfReferenceUID;
+    const segReferencedSeriesInstanceUID = segDisplaySet.referencedSeriesInstanceUID //miguel
 
     viewportDisplaySetInstanceUIDs.forEach(displaySetInstanceUID => {
       // check if the displaySet is sharing the same frameOfReferenceUID
@@ -1345,7 +1346,8 @@ class SegmentationService {
       // don't want to show the segmentation for all the frames
       if (
         displaySet.isReconstructable &&
-        displaySet?.images?.[0]?.FrameOfReferenceUID === segFrameOfReferenceUID
+        displaySet?.images?.[0]?.FrameOfReferenceUID === segFrameOfReferenceUID &&
+        displaySet.SeriesInstanceUID === segReferencedSeriesInstanceUID //miguel
       ) {
         shouldDisplaySeg = true;
       }

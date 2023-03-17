@@ -155,8 +155,9 @@ module.exports = (env, argv) => {
           target: 'http://localhost:8042',
           pathRewrite: { '^/orthanc1': '' },
         },
-        '/api': {
-          target: 'http://localhost:8006'
+        '/cliniti-backend': {
+          target: 'http://localhost:8006/',
+          pathRewrite: { '^/cliniti-backend': '' },
         },
         '/cliniti-ws': {
           target: 'http://localhost:8006/ws',

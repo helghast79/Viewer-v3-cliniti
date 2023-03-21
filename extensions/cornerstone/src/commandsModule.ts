@@ -161,7 +161,7 @@ const commandsModule = ({
 
       const toolGroup = _getToolGroup(toolGroupId);
       const toolGroupViewportIds = toolGroup?.getViewportIds?.();
-
+      console.log(toolGroup, toolGroupViewportIds)
       // if toolGroup has been destroyed, or its viewports have been removed
       if (!toolGroupViewportIds || !toolGroupViewportIds.length) {
         return;

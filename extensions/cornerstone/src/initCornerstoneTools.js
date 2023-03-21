@@ -1,4 +1,5 @@
 import {
+  BrushTool,
   PanTool,
   WindowLevelTool,
   StackScrollTool,
@@ -29,6 +30,7 @@ import CalibrationLineTool from './tools/CalibrationLineTool';
 
 export default function initCornerstoneTools(configuration = {}) {
   init(configuration);
+  addTool(BrushTool);
   addTool(PanTool);
   addTool(WindowLevelTool);
   addTool(StackScrollMouseWheelTool);
@@ -68,6 +70,7 @@ export default function initCornerstoneTools(configuration = {}) {
 }
 
 const toolNames = {
+  Brush: BrushTool.toolName,
   Pan: PanTool.toolName,
   ArrowAnnotate: ArrowAnnotateTool.toolName,
   WindowLevel: WindowLevelTool.toolName,

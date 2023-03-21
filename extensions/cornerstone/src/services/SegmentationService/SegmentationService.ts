@@ -950,7 +950,7 @@ class SegmentationService {
     this._setActiveSegmentationForToolGroup(
       segmentationId,
       toolGroupId,
-      segmentationRepresentationUIDs[0]
+      false
     );
 
     cstSegmentation.config.color.setColorLUT(
